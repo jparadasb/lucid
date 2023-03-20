@@ -3,7 +3,7 @@
   "source": "src/index.js",
   "main": "dist/main.js",
   "module": "dist/module.js",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "isLibrary": true,
   "scripts": {
