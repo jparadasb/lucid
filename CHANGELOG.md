@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/jparadasb/react-lucid/compare/v1.3.0...v1.3.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* scope npm publish workflow ([80e1f17](https://github.com/jparadasb/react-lucid/commit/80e1f17e320ef638aa20b6e76de696c9a7f02bad))
+
 ## [1.3.0](https://github.com/jparadasb/lucid/compare/v1.2.0...v1.3.0) (2023-03-20)
 
 
