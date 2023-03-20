@@ -36,7 +36,7 @@
   &__scroll_buttons {
     border-radius: var(--scroll-button-border-radius);
     color: var(--scroll-buttons-font-color);
-    font-family: var(--scroll-buttons-font, --default-font);
+    font-family: var(--scroll-buttons-font);
     padding: 8px;
 
     &:disabled {
