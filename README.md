@@ -1,17 +1,17 @@
-# React Lucid
+# Lucid
 
-React Lucid is a library of reusable React components for building web applications. It provides a set of UI components that can be easily customized and integrated into your project.
+Lucid is a library of reusable React components for building web applications. It provides a set of UI components that can be easily customized and integrated into your project.
 
 ## Installation
 
-To use react-lucid, you can install it via npm or yarn:
+To use @lambdatauri/lucid, you can install it via npm or yarn:
 
 ```bash
-npm install react-lucid
+npm install @lambdatauri/lucid
 ```
 
 ```bash
-yarn add react-lucid
+yarn add @lambdatauri/lucid
 ```
 
 ## Components
@@ -23,7 +23,7 @@ The `Tabs` component is a tabbed navigation component that allows users to switc
 Example usage:
 
 ```jsx
-import { Tabs } from "react-lucid";
+import { Tabs } from "@lambdatauri/lucid";
 
 <Tabs showNavigation={true} defaultActiveTab="first">
   <Tabs.Item eventKey="first" title="First tab" icon="😭">

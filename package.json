@@ -1,5 +1,5 @@
 {
-  "name": "react-lucid",
+  "name": "@lambdatauri/lucid",
   "source": "src/index.js",
   "main": "dist/main.js",
   "module": "dist/module.js",
