@@ -8,13 +8,19 @@
   "isLibrary": true,
   "author": "@jparadasb",
   "license": "MIT",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jparadasb/react-lucid.git"
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build",
+    "build": "parcel build --no-source-maps",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
     "release": "standard-version"

@@ -1,4 +1,2 @@
-import Tabs from "./Tabs";
-import Dropdown from "./Dropdown";
-
-export { Tabs, Dropdown };
+export Tabs from "./Tabs";
+export Dropdown from "./Dropdown";
