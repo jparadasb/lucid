@@ -1,4 +1,16 @@
-import React from "react";
+import React, { RefObject } from "react";
+
+export interface ITabItemProps {
+  title?: string;
+  className?: string;
+  forwardedRef?: RefObject<HTMLLIElement>;
+  onClick?: (eventKey: string) => void;
+  eventKey?: string;
+  navigation?: boolean;
+  icon?: React.ReactNode;
+  classBuilder?: (className: string) => string;
+  children?: React.ReactNode;
+}
 
 const TabItem = ({
   title,
@@ -8,8 +20,8 @@ const TabItem = ({
   eventKey,
   navigation,
   icon,
-  classBuilder = () => {},
-}) => {
+  classBuilder = (className) => className,
+}: ITabItemProps) => {
   const c = classBuilder;
   return (
     <li
@@ -20,9 +32,9 @@ const TabItem = ({
     >
       <button
         className={c("__tabs_item__button")}
-        onClick={onClick.bind(null, eventKey)}
+        onClick={() => onClick(eventKey)}
         role="tab"
-        tabIndex={navigation ? "-1" : "0"}
+        tabIndex={navigation ? -1 : 0}
       >
         <div className={c("__tabs_item--label")}>
           {icon ? <div className={c("__tabs_item--icon")}>{icon}</div> : <></>}

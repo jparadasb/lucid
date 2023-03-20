@@ -1,27 +1,48 @@
 import caretDown from "../../assets/icons/caret-down.svg";
-import React, { Children, useLayoutEffect, useMemo, useState } from "react";
+import React, {
+  Children,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
-import DropdownItem from "./Dropdown.Item";
+import DropdownItem, { IDropdownItemProps } from "./Dropdown.Item";
 
-const Dropdown = ({
+export interface IDropdownProps {
+  children: React.ReactNode;
+  classBuilder: (className: string) => string;
+  tabsHeight: number;
+  forwardedRef: React.RefObject<HTMLLIElement>;
+  show: boolean;
+  grouping?: boolean;
+}
+
+export interface IDropdownGroup {
+  group?: string;
+  eventKey?: string;
+  children: JSX.Element[];
+}
+
+export const Dropdown = ({
   children,
   classBuilder,
   tabsHeight,
   forwardedRef,
   show,
   grouping,
-}) => {
-  const [open, setOpen] = useState(false);
-  const toggleOnClick = () => setOpen(!open);
+}: IDropdownProps) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const toggleOnClick = () => setOpen((prevOpen) => !prevOpen);
   const c = classBuilder;
-  const items = useMemo(() => {
+  const items = useMemo<IDropdownGroup[]>(() => {
     const filteredChildren = Children.toArray(children).filter(
-      (child) => child.type === DropdownItem
-    );
+      (child) => child && child.type === DropdownItem
+    ) as JSX.Element[];
 
     if (grouping) {
-      return filteredChildren.reduce((acc, child) => {
-        const { props } = child;
+      return filteredChildren.reduce<IDropdownGroup[]>((acc, child) => {
+        const { props } = child as JSX.Element & { props: IDropdownItemProps };
         const { eventKey, group } = props;
 
         if (group) {
@@ -41,15 +62,19 @@ const Dropdown = ({
       }, []);
     }
 
-    return filteredChildren;
-  }, [children]);
+    return filteredChildren.map<IDropdownGroup>((child) => ({
+      eventKey: child.props.eventKey,
+      children: [child],
+    }));
+  }, [children, grouping]);
 
   const getStateClass = () => (open ? "__dropdown__container--open" : "");
 
-  const handleOnClick = (onClick) => (eventKey) => {
-    setOpen(false);
-    onClick(eventKey);
-  };
+  const handleOnClick =
+    (onClick: IDropdownItemProps["onClick"]) => (eventKey: string) => {
+      setOpen(false);
+      onClick?.(eventKey);
+    };
 
   if (!show) {
     return <></>;
@@ -58,15 +83,18 @@ const Dropdown = ({
   /** listener to detect click outside this element */
   useLayoutEffect(() => {
     if (open) {
-      const listener = (event) => {
-        if (!forwardedRef.current.contains(event.target)) {
+      const listener = (event: MouseEvent) => {
+        if (
+          forwardedRef.current &&
+          !forwardedRef.current.contains(event.target as Node)
+        ) {
           setOpen(false);
         }
       };
       document.addEventListener("click", listener);
       return () => document.removeEventListener("click", listener);
     }
-  }, [open]);
+  }, [forwardedRef, open]);
 
   return (
     <li
@@ -83,7 +111,7 @@ const Dropdown = ({
         aria-expanded={open}
         onClick={toggleOnClick}
       >
-        <img width={24} src={caretDown} />
+        <img width={24} src={caretDown} alt="" />
       </button>
       <ul
         aria-labelledby="tab-menu-items"
@@ -124,5 +152,3 @@ const Dropdown = ({
 };
 
 Dropdown.Item = DropdownItem;
-
-export default Dropdown;

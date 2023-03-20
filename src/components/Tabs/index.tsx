@@ -6,45 +6,71 @@ import React, {
   useMemo,
   useRef,
   useState,
+  FC,
 } from "react";
 
 import "./Tabs.scss";
 
 import { direction } from "../../constants";
 import { useClassName } from "../../helpers";
-import { Dropdown } from "../";
+import { Dropdown } from "../Dropdown";
 import Nav from "./Tabs.Nav";
 import TabItem from "./Tabs.Item";
 
 const findIndexHandler =
-  (activeTab) =>
-  ({ props: { eventKey } }) =>
+  (activeTab: string) =>
+  ({ props: { eventKey } }: any) =>
     eventKey === activeTab;
 
-const Tabs = ({
+export interface ITabsProps {
+  children: React.ReactNode;
+  defaultActiveTab?: string | null;
+  showNavigation?: boolean;
+  grouping?: boolean;
+  componentName?: string;
+}
+
+export const Tabs = ({
   children,
   defaultActiveTab = null,
   showNavigation = false,
   grouping = false,
   componentName = "c-Tabs",
-}) => {
+}: ITabsProps) => {
   const c = useClassName(componentName);
-  const [activeTab, setActiveTab] = useState(defaultActiveTab);
-  const [navCoordinates, setNavCoordinates] = useState({ width: 0 });
-  const [toggleMenuCoordinates, setToggleMenuCoordinates] = useState({
+  const [activeTab, setActiveTab] = useState<string | null>(defaultActiveTab);
+  const [navCoordinates, setNavCoordinates] = useState<{ width: number }>({
     width: 0,
   });
-  const [tabsHeight, setTabsHeight] = useState(0);
-  const [isDisabled, setIsDisabled] = useState({
+  const [toggleMenuCoordinates, setToggleMenuCoordinates] = useState<{
+    width: number;
+  }>({ width: 0 });
+  const [tabsHeight, setTabsHeight] = useState<number>(0);
+  const [isDisabled, setIsDisabled] = useState<{
+    forward: boolean;
+    backward: boolean;
+  }>({
     forward: true,
     backward: false,
   });
-  const tabsNavItemRefs = useRef({});
-  const tabsRef = useRef(null);
-  const tabsToggleMenuRef = useRef(null);
-  const scrollNavRef = useRef(null);
+  const tabsNavItemRefs = useRef<{ [key: string]: HTMLElement }>({});
+  const tabsRef = useRef<HTMLUListElement>(null);
+  const tabsToggleMenuRef = useRef<HTMLDivElement>(null);
+  const scrollNavRef = useRef<HTMLDivElement>(null);
+
   const tabItems = useMemo(
-    () => Children.toArray(children).filter((child) => child.type === TabItem),
+    () =>
+      Children.toArray(children).filter((child) => {
+        if (typeof child === "string" || typeof child === "number") {
+          return false;
+        }
+
+        if (!child) {
+          return false;
+        }
+
+        return child && child instanceof TabItem;
+      }),
     [children]
   );
 
@@ -62,7 +88,10 @@ const Tabs = ({
   }, []);
 
   useEffect(() => {
-    const index = tabItems.findIndex(findIndexHandler(activeTab));
+    const index = tabItems.findIndex((child) => {
+      return child.props.eventKey === activeTab;
+    });
+
     if (index === tabItems.length - 1) {
       setIsDisabled({ forward: true, backward: false });
       return;
@@ -74,15 +103,20 @@ const Tabs = ({
     }
 
     setIsDisabled({ forward: false, backward: false });
-  }, [activeTab]);
+  }, [activeTab, tabItems]);
 
   /**
    * This useEffect is used to handle the movement of the tabs
    * once the user select a tab that is not visible in the scroll navigation
    */
   useLayoutEffect(() => {
+    if (!activeTab) {
+      return;
+    }
+
     const element = tabsNavItemRefs.current[activeTab];
-    if (element) {
+
+    if (element && element.parentElement) {
       const bounding = element.getBoundingClientRect();
       const parentBounding = element.parentElement.getBoundingClientRect();
       const overflowRightLimit =
@@ -91,36 +125,21 @@ const Tabs = ({
 
       if (bounding.left < overflowLeftLimit) {
         const newPosition =
-          element.parentNode.scrollLeft - (overflowLeftLimit - bounding.left);
+          element.parentElement!.scrollLeft -
+          (overflowLeftLimit - bounding.left);
 
         // this condition is used because the smooth behavior is not working properly when the scroll is at the end
         const behavior = newPosition > 1 ? "smooth" : "auto";
-
-        element.parentNode.scrollTo({ left: newPosition, behavior });
-        return;
-      }
-
-      // same idea as above but for the right side
-      // taking the right position of the element and compare it with the start position of the toggle menu
-      if (bounding.right > overflowRightLimit) {
-        const newPosition =
-          element.parentNode.scrollLeft + bounding.right - overflowRightLimit;
-
-        const behavior =
-          element.offsetLeft + element.offsetWidth <
-          element.parentNode.scrollWidth
-            ? "smooth"
-            : "auto";
-
-        element.parentNode.scrollTo({ left: newPosition, behavior });
+        // TODO: validate parentNode works after changed by parentElement
+        element.parentElement!.scrollTo({ left: newPosition, behavior });
         return;
       }
     }
   }, [activeTab]);
 
-  const onClick = useCallback((key) => setActiveTab(key), []);
+  const onClick = useCallback((key: string) => setActiveTab(key), []);
   const moveTo = useCallback(
-    (action) => {
+    (action: string) => {
       const index = tabItems.findIndex(findIndexHandler(activeTab));
       switch (action) {
         case direction.FORWARD: {
@@ -135,7 +154,6 @@ const Tabs = ({
           }
           return;
         }
-
         default:
           return;
       }
@@ -144,11 +162,10 @@ const Tabs = ({
   );
 
   const getStatusClass = useCallback(
-    (baseName, eventKey) => {
+    (baseName: string, eventKey: string) => {
       if (eventKey !== activeTab) {
         return "";
       }
-
       return baseName + "--active";
     },
     [activeTab]
@@ -224,5 +241,3 @@ const Tabs = ({
 };
 
 Tabs.Item = TabItem;
-
-export default Tabs;

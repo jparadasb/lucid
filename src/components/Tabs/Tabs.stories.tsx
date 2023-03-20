@@ -1,11 +1,11 @@
 import React from "react";
 
-import Tab from "./";
+import Tabs from "./";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Example/Tab",
-  component: Tab,
+  component: Tabs,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     showNavigation: {
@@ -18,8 +18,8 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => (
-  <Tab {...args} showNavigation={true} defaultActiveTab="first">
-    <Tab.Item eventKey="first" title="First tab" icon="😭">
+  <Tabs {...args} showNavigation={true} defaultActiveTab="first">
+    <Tabs.Item eventKey="first" title="First tab" icon="😭">
       <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus illum
@@ -34,8 +34,8 @@ const Template = (args) => (
         quibusdam saepe nulla? Obcaecati voluptate harum corporis aspernatur
         nemo ea cupiditate?
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="second" title="Second tab" icon="😄">
+    </Tabs.Item>
+    <Tabs.Item eventKey="second" title="Second tab" icon="😄">
       <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
@@ -79,16 +79,16 @@ const Template = (args) => (
         sapiente consequatur minima ab autem praesentium eligendi quo
         accusantium. Nihil, nostrum?
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="third" title="Third tab" icon="🐕️">
+    </Tabs.Item>
+    <Tabs.Item eventKey="third" title="Third tab" icon="🐕️">
       <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam</h1>
       <p>
         lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
         consectetur, nisl nec ultricies lacinia, nisl nisl aliquet lorem, nec
         tincidunt nisl nisl nec nisl. Nullam consectetur, nisl nec ultricies
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_10" title="title number 10" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_10" title="title number 10" icon="🐷">
       <h1>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
         maiores, unde esse repellendus libero laboriosam expedita nisi nesciunt
@@ -109,8 +109,8 @@ const Template = (args) => (
           </span>
         </p>
       </h1>
-    </Tab.Item>
-    <Tab.Item eventKey="next_100" title="title number 100" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_100" title="title number 100" icon="🐷">
       <h1>
         Rerum ipsa ratione fugiat reiciendis adipisci libero sequi itaque,
         magni, temporibus error voluptatibus commodi! Ad nisi est, tempora, rem
@@ -130,8 +130,8 @@ const Template = (args) => (
           </span>
         </p>
       </h1>
-    </Tab.Item>
-    <Tab.Item eventKey="next_1000" title="title number 1000" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_1000" title="title number 1000" icon="🐷">
       <h1>
         Et iure doloribus nemo fugit blanditiis velit deleniti eaque quisquam
         excepturi provident maxime inventore hic corporis, architecto
@@ -152,8 +152,8 @@ const Template = (args) => (
           </span>
         </p>
       </h1>
-    </Tab.Item>
-    <Tab.Item eventKey="next_2" title="title number 2" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_2" title="title number 2" icon="🐷">
       <h1>
         Dolorum tenetur numquam repellat aut vel cupiditate consectetur soluta,
         necessitatibus, totam recusandae maxime vero molestias dolore nulla?
@@ -174,8 +174,8 @@ const Template = (args) => (
           </span>
         </p>
       </h1>
-    </Tab.Item>
-    <Tab.Item eventKey="next_3" title="title number 3" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_3" title="title number 3" icon="🐷">
       <h1>
         Suscipit, autem in molestias officia ipsam libero voluptatem veritatis
         id enim, incidunt quas itaque delectus aliquam facilis quod! Sunt ipsum
@@ -196,8 +196,8 @@ const Template = (args) => (
           Voluptatibus eos reprehenderit exercitationem nam quo!
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_4" title="title number 4" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_4" title="title number 4" icon="🐷">
       <h1>
         Minima temporibus itaque, voluptas dolorum sequi esse facilis nostrum
         laborum consequuntur perferendis ducimus veniam placeat incidunt in,
@@ -218,8 +218,8 @@ const Template = (args) => (
           quisquam molestias ut unde.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_5" title="title number 5" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_5" title="title number 5" icon="🐷">
       <h1>
         Autem tempore dolore voluptates! Ipsam illum quasi dolorum consequuntur
         quos. Voluptatum eligendi aperiam velit autem quae iusto dolorem enim
@@ -239,8 +239,8 @@ const Template = (args) => (
           possimus fugit.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_6" title="title number 6" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_6" title="title number 6" icon="🐷">
       <h1>
         Iusto, cum reprehenderit non voluptatem incidunt quo aliquam odit
         tenetur asperiores quaerat aut ipsa dolorum vel debitis quis consequatur
@@ -260,8 +260,8 @@ const Template = (args) => (
           in.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_7" title="title number 7" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_7" title="title number 7" icon="🐷">
       <h1>
         Tempore, molestias adipisci magni iure enim quae atque eveniet labore
         assumenda porro corrupti, error nulla! Cum culpa velit exercitationem
@@ -282,8 +282,8 @@ const Template = (args) => (
           expedita praesentium? Illum?
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_8" title="title number 8" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_8" title="title number 8" icon="🐷">
       <h1>
         Consequatur necessitatibus, fugit qui earum inventore voluptatibus vero
         quibusdam ab ipsa maiores animi, asperiores, totam voluptates ipsum.
@@ -305,8 +305,8 @@ const Template = (args) => (
           ad.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_9" title="title number 9" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_9" title="title number 9" icon="🐷">
       <h1>
         Placeat quasi ea debitis nobis nihil rem libero aliquid commodi
         distinctio, consectetur iusto. Rem ab sit, minima natus repudiandae
@@ -325,8 +325,8 @@ const Template = (args) => (
           ipsum dolores sunt ipsa eum molestiae minima omnis, magni ad!
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_11" title="title number 11" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_11" title="title number 11" icon="🐷">
       <h1>
         Omnis asperiores quos tempore cupiditate excepturi magnam, laboriosam
         quae quaerat neque suscipit et, culpa officiis soluta ducimus corporis
@@ -347,8 +347,8 @@ const Template = (args) => (
           obcaecati impedit sed.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_12" title="title number 12" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_12" title="title number 12" icon="🐷">
       <h1>
         In repellendus error ipsam facilis temporibus reiciendis velit quibusdam
         adipisci vel omnis similique libero cum quis magni perferendis, vero
@@ -369,8 +369,8 @@ const Template = (args) => (
           beatae ipsam expedita?
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_13" title="title number 13" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_13" title="title number 13" icon="🐷">
       <h1>
         Assumenda, eaque! Dignissimos voluptate iusto id dolorem mollitia
         recusandae aut quidem, sapiente eligendi nesciunt architecto laudantium
@@ -391,8 +391,8 @@ const Template = (args) => (
           eligendi, porro nostrum. Officia!
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_14" title="title number 14" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_14" title="title number 14" icon="🐷">
       <h1>
         Molestias quisquam odio quas saepe sed vel corrupti delectus in quaerat
         perspiciatis ad est reiciendis repellat, atque, praesentium nam
@@ -413,8 +413,8 @@ const Template = (args) => (
           non nesciunt.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_15" title="title number 15" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_15" title="title number 15" icon="🐷">
       <h1>
         Obcaecati, possimus. Tenetur, praesentium. Quia, pariatur accusamus
         aliquid modi natus, recusandae nostrum perspiciatis deserunt
@@ -435,8 +435,8 @@ const Template = (args) => (
           sed!
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_16" title="title number 16" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_16" title="title number 16" icon="🐷">
       <h1>
         Doloremque repellendus pariatur magnam officia praesentium molestias vel
         laudantium. Rerum nam quidem, similique tempore dolor nulla beatae a ut.
@@ -457,8 +457,8 @@ const Template = (args) => (
           voluptatem modi, quis molestias?
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_17" title="title number 17" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_17" title="title number 17" icon="🐷">
       <h1>
         Quod, ducimus at? Nemo deserunt porro unde? Unde vel quis non
         praesentium. Suscipit hic necessitatibus, culpa quas ullam delectus fuga
@@ -478,8 +478,8 @@ const Template = (args) => (
           Aspernatur.
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_18" title="title number 18" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_18" title="title number 18" icon="🐷">
       <h1>
         Quibusdam magnam nostrum quod quisquam odio modi magni incidunt, minima
         saepe, et asperiores rerum ullam impedit maxime qui tempora dolorem
@@ -499,8 +499,8 @@ const Template = (args) => (
           tempore minima!
         </span>
       </p>
-    </Tab.Item>
-    <Tab.Item eventKey="next_19" title="title number 19" icon="🐷">
+    </Tabs.Item>
+    <Tabs.Item eventKey="next_19" title="title number 19" icon="🐷">
       <h1>
         Eveniet ex accusantium ullam illum sequi quos corrupti incidunt quia sed
         aspernatur magni ut minus ab amet adipisci mollitia fuga, quas
@@ -520,12 +520,12 @@ const Template = (args) => (
           porro aliquid?
         </span>
       </p>
-    </Tab.Item>
-  </Tab>
+    </Tabs.Item>
+  </Tabs>
 );
 
-export const Primary = Template.bind({});
+export const Primary: Story<Tabs> = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  label: "Tab",
+  label: "Tabs",
 };

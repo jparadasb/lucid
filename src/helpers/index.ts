@@ -1,20 +1,15 @@
 import { useCallback, useRef } from "react";
 
-/**
- *
- * @param {string} baseClass
- * @returns {function}
- * @example const c = useClassName('c-Button');
- * c('--primary', '--small', '--disabled');
- * // returns 'c-Button--primary c-Button--small c-Button--disabled'
- *
- * Using useCallback we can memoize the function and avoid unnecessary re-renders
- * also with the memoizedClassesRef we can store the memoized classes and avoid to run the map function every time
- */
-export const useClassName = (baseClass) => {
-  const memoizedClassesRef = useRef({});
+type ClassName = string | undefined;
+type useClassNameFunction = (
+  baseClass: string
+) => (...classes: ClassName[]) => string;
+
+export const useClassName: useClassNameFunction = (baseClass: string) => {
+  const memoizedClassesRef = useRef<{ [key: string]: string }>({});
+
   const classHelper = useCallback(
-    (...classes) => {
+    (...classes: ClassName[]) => {
       const classKey = JSON.stringify(classes);
       if (memoizedClassesRef.current[classKey]) {
         return memoizedClassesRef.current[classKey];
