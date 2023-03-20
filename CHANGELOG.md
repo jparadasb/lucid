@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/jparadasb/react-lucid/compare/v2.0.0...v3.0.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* issue with prop type on component ([bfbf9c0](https://github.com/jparadasb/react-lucid/commit/bfbf9c0c1904319c6e210a61df6255ca7fa4b028))
+
 ## [2.0.0](https://github.com/jparadasb/react-lucid/compare/v1.3.3...v2.0.0) (2023-03-20)
 
 ### [1.3.3](https://github.com/jparadasb/react-lucid/compare/v1.3.2...v1.3.3) (2023-03-20)
