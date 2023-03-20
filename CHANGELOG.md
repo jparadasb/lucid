@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/jparadasb/lucid/compare/v1.2.0...v1.3.0) (2023-03-20)
+
+
+### Features
+
+* added github action workflow to publish on npm ([8d5c1bd](https://github.com/jparadasb/lucid/commit/8d5c1bdc1820ab9e0c034911e984f5ae3bf44ab2))
+
 ## 1.2.0 (2023-03-20)
 
 
