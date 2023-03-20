@@ -1,11 +1,12 @@
 import { useCallback, useRef } from "react";
 
-type ClassName = string | undefined;
-type useClassNameFunction = (
+export type ClassName = string | undefined;
+export type classBuilderType = (...classes: ClassName[]) => string;
+export type useClassNameType = (
   baseClass: string
-) => (...classes: ClassName[]) => string;
+) => classBuilderType;
 
-export const useClassName: useClassNameFunction = (baseClass: string) => {
+export const useClassName: useClassNameType = (baseClass: string) => {
   const memoizedClassesRef = useRef<{ [key: string]: string }>({});
 
   const classHelper = useCallback(

@@ -1,6 +1,7 @@
 import caretLeft from "../../assets/icons/caret-left.svg";
 import caretRight from "../../assets/icons/caret-right.svg";
 import React, { FunctionComponent, RefObject } from "react";
+import { classBuilderType } from "../../helpers";
 
 import { direction } from "../../constants";
 
@@ -9,7 +10,7 @@ type NavProps = {
   moveTo: (direction: string) => void;
   forwardedRef: RefObject<HTMLLIElement>;
   show: boolean;
-  classBuilder: (modifier: string, value?: string | number) => string;
+  classBuilder: classBuilderType;
   disabledForward: boolean;
   disabledBackward: boolean;
 };

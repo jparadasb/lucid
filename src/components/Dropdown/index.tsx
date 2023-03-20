@@ -12,8 +12,8 @@ import DropdownItem, { IDropdownItemProps } from "./Dropdown.Item";
 export interface IDropdownProps {
   children: React.ReactNode;
   classBuilder: (className: string) => string;
-  tabsHeight: number;
-  forwardedRef: React.RefObject<HTMLLIElement>;
+  tabsHeight?: number;
+  forwardedRef?: React.RefObject<HTMLLIElement>;
   show: boolean;
   grouping?: boolean;
 }
@@ -65,6 +65,7 @@ export const Dropdown = ({
     return filteredChildren.map<IDropdownGroup>((child) => ({
       eventKey: child.props.eventKey,
       children: [child],
+      props: child.props,
     }));
   }, [children, grouping]);
 

@@ -12,7 +12,7 @@ import React, {
 import "./Tabs.scss";
 
 import { direction } from "../../constants";
-import { useClassName } from "../../helpers";
+import { useClassName, classBuilderType } from "../../helpers";
 import { Dropdown } from "../Dropdown";
 import Nav from "./Tabs.Nav";
 import TabItem from "./Tabs.Item";
@@ -37,7 +37,7 @@ export const Tabs = ({
   grouping = false,
   componentName = "c-Tabs",
 }: ITabsProps) => {
-  const c = useClassName(componentName);
+  const c: classBuilderType = useClassName(componentName);
   const [activeTab, setActiveTab] = useState<string | null>(defaultActiveTab);
   const [navCoordinates, setNavCoordinates] = useState<{ width: number }>({
     width: 0,
@@ -55,8 +55,8 @@ export const Tabs = ({
   });
   const tabsNavItemRefs = useRef<{ [key: string]: HTMLElement }>({});
   const tabsRef = useRef<HTMLUListElement>(null);
-  const tabsToggleMenuRef = useRef<HTMLDivElement>(null);
-  const scrollNavRef = useRef<HTMLDivElement>(null);
+  const tabsToggleMenuRef = useRef<HTMLLIElement>(null);
+  const scrollNavRef = useRef<HTMLLIElement>(null);
 
   const tabItems = useMemo(
     () =>
@@ -69,7 +69,7 @@ export const Tabs = ({
           return false;
         }
 
-        return child && child instanceof TabItem;
+        return child && child.type === TabItem;
       }),
     [children]
   );

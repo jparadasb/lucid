@@ -24,7 +24,10 @@
     "build": "parcel build --no-source-maps",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:major": "standard-version --release-as major",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -73,5 +76,8 @@
       "chore",
       "refactor"
     ]
+  },
+  "resolutions": {
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
   }
 }
