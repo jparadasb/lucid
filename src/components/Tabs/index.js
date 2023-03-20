@@ -8,6 +8,8 @@ import React, {
   useState,
 } from "react";
 
+import "./Tabs.scss";
+
 import { direction } from "../../constants";
 import { useClassName } from "../../helpers";
 import { Dropdown } from "../";
@@ -24,8 +26,8 @@ const Tabs = ({
   defaultActiveTab = null,
   showNavigation = false,
   grouping = false,
+  componentName = "c-Tabs",
 }) => {
-  const componentName = "c-Tabs";
   const c = useClassName(componentName);
   const [activeTab, setActiveTab] = useState(defaultActiveTab);
   const [navCoordinates, setNavCoordinates] = useState({ width: 0 });
