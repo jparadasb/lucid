@@ -1,4 +1,4 @@
-import caretDown from "../../assets/icons/caret-down.svg";
+import { Icon } from "../Icon";
 import React, {
   Children,
   useLayoutEffect,
@@ -112,7 +112,7 @@ export const Dropdown = ({
         aria-expanded={open}
         onClick={toggleOnClick}
       >
-        <img width={24} src={caretDown} alt="" />
+        <Icon name="caret-down" size={24} />
       </button>
       <ul
         aria-labelledby="tab-menu-items"

@@ -1,5 +1,4 @@
-import caretLeft from "../../assets/icons/caret-left.svg";
-import caretRight from "../../assets/icons/caret-right.svg";
+import { Icon } from "../Icon";
 import React, { FunctionComponent, RefObject } from "react";
 import { classBuilderType } from "../../helpers";
 
@@ -39,7 +38,7 @@ const Nav: FunctionComponent<NavProps> = ({
         onClick={() => moveTo(direction.BACKWARD)}
         disabled={disabledBackward}
       >
-        <img width={24} src={caretLeft} alt="caret left icon" />
+        <Icon name="caret-left" size={24} />
       </button>
       <button
         className={c("__scroll_buttons", "__scroll_buttons--active")}
@@ -48,7 +47,7 @@ const Nav: FunctionComponent<NavProps> = ({
         onClick={() => moveTo(direction.FORWARD)}
         disabled={disabledForward}
       >
-        <img width={24} src={caretRight} alt="caret right icon" />
+        <Icon name="caret-right" size={24} />
       </button>
     </li>
   );
